@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <flow>
+    <folder label="Main">
+            <output>
+                <prompt selectionType="RANDOM">
+                    <item>Once upon a time you went to a market and purchased a fox, a goose, and a bag of beans. On his way home, you come to the bank of a river and rented a boat. But in crossing the river by boat, you could carry only himself and a single one of your purchases—the fox, the goose, or the bag of beans.
+If left together, the fox would eat the goose, or the goose would eat the beans.
+Your challenge was to carry yourself and your purchases to the far bank of the river, leaving each purchase intact. How will you do it?</item>
+                </prompt>
+            </output>
+            <output id="begin" >
+                <prompt selectionType="SEQUENTIAL">
+                    <item>You, fox, goose and bag of beans left bank.</item>
+                </prompt>
+                <action varName="Moves" operator="SET_TO">0</action>
+                <getUserInput id="MFGB_BEGIN_INPUT">
+                    <search ref="MFGB_BEGIN"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+            <output id="FB_MG_OUTPUT">
+                <prompt selectionType="SEQUENTIAL">
+                    <item>Fox and bag of beans on left bank, you and goose right.</item>
+                </prompt>
+                <getUserInput id="FB_MG_INPUT">
+                    <search ref="FB_MG"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+            <output id="B_MFG_OUTPUT">
+                <prompt selectionType="SEQUENTIAL">
+                    <item>The bag of beans on left bank; You, fox, goose on right bank.</item>
+                </prompt>
+                <getUserInput id="B_MFG_INPUT">
+                    <search ref="B_MFG"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+
+            <output id="MFB_G_OUTPUT">
+                <prompt selectionType="SEQUENTIAL">
+                    <item>You, fox, bag of beans on left bank; goose on right bank.</item>
+                </prompt>
+                <getUserInput id="MFB_G_INPUT">
+                    <search ref="MFB_G"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+            <output id="F_MGB_OUPUT">
+                <prompt selectionType="SEQUENTIAL">
+                    <item>Fox on left bank; you, goose and bag of beans on right bank.</item>
+                </prompt>
+                <getUserInput id="F_MGB_INPUT">
+                    <search ref="F_MGB"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+            <output id="MFG_B_OUTPUT">
+                <prompt selectionType="SEQUENTIAL">
+                  <item>You, fox, goose on left bank; Bag of beans on right bank.</item>
+                </prompt>
+                <getUserInput id="MFG_B_INPUT">
+                    <search ref="MFG_B"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+            <output id="G_MFB_OUTPUT">
+                <prompt selectionType="SEQUENTIAL">
+                  <item>Goose on left bank; You, fox, bag of beans on right bank.</item>
+                </prompt>
+                <getUserInput id="G_MFB_INPUT">
+                    <search ref="G_MFB"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+            <output id="MG_FB_OUTPUT">
+                <prompt selectionType="SEQUENTIAL">
+                  <item>You, goose on left bank; Fox, Bag of beans on right bank.</item>
+                </prompt>
+                <getUserInput id="MG_FB_INPUT">
+                    <search ref="MG_FB"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+            <output id="MGB_F_OUTPUT">
+                <prompt selectionType="SEQUENTIAL">
+                  <item>You, goose and bag of beans on left bank; Fox on right bank.</item>
+                </prompt>
+                <getUserInput id="MGB_F_INPUT">
+                    <search ref="MGB_F"/>
+                    <default>
+                        <output>
+                            <prompt selectionType="RANDOM">
+                                <item>I did not quite get that.</item>
+                                <item>I didnt grasp what you said.</item>
+                                <item>I'm not following you at the moment.</item>
+                            </prompt>
+                        </output>
+                    </default>
+                </getUserInput>
+            </output>
+            <output id="LOSE_CG">
+              <prompt><item>You lose - goose eats beans &lt;br&gt;Starting over
+                </item>
+              </prompt>
+              <goto ref="begin" />
+            </output>
+            <output id="LOSE_FC">
+              <prompt><item>You lose - fox eats goose &lt;br&gt;Starting over
+                </item>
+              </prompt>
+              <goto ref="begin" />
+            </output>
+            <output id="WIN">
+              <prompt>
+                <item>Congrats you win. {Moves} crossings done. &lt;br&gt;Starting over</item>
+              </prompt>
+              <goto ref="begin" />
+            </output>
+            <folder id="MFGB_BEGIN">
+              <input>
+                <grammar>
+                  <item>Take fox over</item>
+                  <item>take fox over</item>
+                </grammar>
+                <goto ref="LOSE_CG" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Take goose over</item>
+                  <item>take goose over</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="FB_MG_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Take beans over</item>
+                  <item>Take the bag of beans over</item>
+                  <item>Take the bag over</item>
+                  <item>take the bag over</item>
+                  <item>take beans over</item>
+                  <item>take the bag of beans over</item>
+                </grammar>
+                <goto ref="LOSE_FC" />
+              </input>
+            </folder>
+            <folder id="FB_MG">
+              <input>
+                <grammar>
+                  <item>Return</item>
+                  <item>return</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="MFB_G_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Return with goose</item>
+                  <item>return with goose</item>
+                </grammar>
+                <goto ref="begin" />
+              </input>
+            </folder>
+            <folder id="MFB_G">
+              <input>
+                <grammar>
+                  <item>Go alone</item>
+                  <item>go alone</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="FB_MG_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Take fox over</item>
+                  <item>take fox over</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="B_MFG_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Take beans over</item>
+                  <item>Take the bag of beans over</item>
+                  <item>Take the bag over</item>
+                  <item>take the bag over</item>
+                  <item>take beans over</item>
+                  <item>take the bag of beans over</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="F_MGB_OUPUT" />
+              </input>
+            </folder>
+            <folder id="F_MGB">
+              <input>
+                <grammar>
+                  <item>Return</item>
+                  <item>return</item>
+                </grammar>
+                <goto ref="LOSE_CG" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Return with goose</item>
+                  <item>return with goose</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="MFG_B_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Return with beans</item>
+                  <item>return with beans</item>
+                  <item>Return with bag</item>
+                  <item>return with bag</item>
+                  <item>Return with teh bag of beans</item>
+                  <item>return with teh bag of beans</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="MFB_G_OUTPUT" />
+              </input>
+            </folder>
+            <folder id="B_MFG">
+              <input>
+                <grammar>
+                  <item>Return</item>
+                  <item>return</item>
+                </grammar>
+                <goto ref="LOSE_FC" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Return with fox</item>
+                  <item>return with fox</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="MFB_G_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Return with goose</item>
+                  <item>return with goose</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="MGB_F_OUTPUT" />
+              </input>
+            </folder>
+            <folder id="MFG_B">
+              <input>
+                <grammar>
+                  <item>Go alone</item>
+                  <item>go alone</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="LOSE_FC" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Take fox over</item>
+                  <item>take fox over</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="G_MFB_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Take goose over</item>
+                  <item>take goose over</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="F_MGB_OUPUT" />
+              </input>
+            </folder>
+            <folder id="G_MFB">
+              <input>
+                <grammar>
+                  <item>Return</item>
+                  <item>return</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="MG_FB_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Return with fox</item>
+                  <item>return with fox</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="MFG_B_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Return with beans</item>
+                  <item>return with beans</item>
+                  <item>Return with bag</item>
+                  <item>return with bag</item>
+                  <item>Return with the bag of beans</item>
+                  <item>return with the bag of beans</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="MGB_F_OUTPUT" />
+              </input>
+            </folder>
+            <folder id="MG_FB">
+              <input>
+                <grammar>
+                  <item>Go alone</item>
+                  <item>go alone</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="G_MFB_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Take goose over</item>
+                  <item>take goose over</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="WIN" />
+              </input>
+            </folder>
+            <folder id="MGB_F">
+              <input>
+                <grammar>
+                  <item>Go alone</item>
+                  <item>go alone</item>
+                </grammar>
+                <goto ref="LOSE_CG" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Take goose over</item>
+                  <item>take goose over</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="B_MFG_OUTPUT" />
+              </input>
+              <input>
+                <grammar>
+                  <item>Take beans over</item>
+                  <item>Take the bag of beans over</item>
+                  <item>Take the bag over</item>
+                  <item>take the bag over</item>
+                  <item>take beans over</item>
+                  <item>take the bag of beans over</item>
+                </grammar>
+                <action varName="Moves" operator="INCREMENT_BY">1</action>
+                <goto ref="G_MFB_OUTPUT" />
+              </input>
+            </folder>
+    </folder>
+  </flow>
+  <variables>
+    <var_folder name="Default">
+      <var name="Moves" type="NUMBER" description="Moves you make to solver puzzle" />
+    </var_folder>
+  </variables>
+</dialog>

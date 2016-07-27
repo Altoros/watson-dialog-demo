@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>IBM Watson Dialog Demo</title>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<style>
+    .conversation-wrap
+    {
+        box-shadow: -2px 0 3px #ddd;
+        padding:0;
+        max-height: 400px;
+        overflow: auto;
+    }
+    .conversation
+    {
+        padding:5px;
+        border-bottom:1px solid #ddd;
+        margin:0;
+
+    }
+
+    .message-wrap
+    {
+        box-shadow: 0 0 3px #ddd;
+        padding:0;
+        height: 94vh;
+    }
+    .msg
+    {
+        padding:5px;
+        /*border-bottom:1px solid #ddd;*/
+        margin:0;
+    }
+    .msg-wrap
+    {
+        padding:10px;
+        max-height: 400px;
+        overflow: auto;
+
+    }
+
+    .time
+    {
+        color:#bfbfbf;
+    }
+
+    .send-wrap
+    {
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        padding:10px;
+        /*background: #f8f8f8;*/
+    }
+
+    .send-message
+    {
+        resize: none;
+    }
+
+    .highlight
+    {
+        background-color: #f7f7f9;
+        border: 1px solid #e1e1e8;
+    }
+
+    .send-message-btn
+    {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+
+        border-bottom-right-radius: 0;
+    }
+    .btn-panel
+    {
+        background: #f7f7f9;
+    }
+
+    .btn-panel .btn
+    {
+        color:#b8b8b8;
+
+        transition: 0.2s all ease-in-out;
+    }
+
+    .btn-panel .btn:hover
+    {
+        color:#666;
+        background: #f8f8f8;
+    }
+    .btn-panel .btn:active
+    {
+        background: #f8f8f8;
+        box-shadow: 0 0 1px #ddd;
+    }
+
+    .btn-panel-conversation .btn,.btn-panel-msg .btn
+    {
+
+        background: #f8f8f8;
+    }
+    .btn-panel-conversation .btn:first-child
+    {
+        border-right: 1px solid #ddd;
+    }
+
+    .msg-wrap .media-heading
+    {
+        color:#003bb3;
+        font-weight: 700;
+    }
+
+
+    .msg-date
+    {
+        background: none;
+        text-align: center;
+        color:#aaa;
+        border:none;
+        box-shadow: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+
+    .send {
+      height: 4vh;
+      padding: 5px 14px 5px 14px;
+    }
+</style>
+
+<script>
+function timeStamp() {
+  var now = new Date();
+  var time = [ now.getHours(), now.getMinutes() ];
+  var suffix = ( time[0] < 12 ) ? "AM" : "PM";
+
+  time[0] = ( time[0] < 12 ) ? time[0] : time[0] - 12;
+  time[0] = time[0] || 12;
+  for ( var i = 1; i < 3; i++ ) {
+    if ( time[i] < 10 ) {
+      time[i] = "0" + time[i];
+    }
+  }
+
+  return time.join(":") + " " + suffix;
+}
+function formatMsg(sender,text) {
+  var tmpl = '<div class="msg-wrap">\
+                <div class="media msg ">\
+                    <a class="pull-left" href="#">\
+                    <img class="media-object" alt="64x64" style="width: 32px; height: 32px;" src="/static/{sender}.png">\
+                    </a>\
+                    <div class="media-body">\
+                    <small class="pull-right time"><i class="fa fa-clock-o"></i> {time}</small>\
+                    <h5 class="media-heading">{sender}</h5>\
+                    <div class="col-lg-10">{msg}</div>\
+                    </div>\
+                </div>\
+            </div>';
+  return tmpl.replace("{time}", timeStamp()).replace("{sender}",sender.toLowerCase()).replace("{sender}", sender).replace("{msg}", text);
+}
+
+$(function() {
+  function sendMsg() {
+    var msg = $("#message").val();
+
+    $(".message-wrap").append(formatMsg("You", msg));
+    $("#message").val("");
+    $(".message-wrap").scrollTop($(".message-wrap")[0].scrollHeight);
+    conn.send(msg);
+  }
+
+  var protocol = 'https:' == document.location.protocol ? 'wss://' : 'ws://';
+  var conn = new WebSocket(protocol + window.location.host +"/msg");
+  conn.onmessage = function(evt) { 
+    $(".message-wrap").append(formatMsg("Bot", evt.data));
+    $(".message-wrap").scrollTop($(".message-wrap")[0].scrollHeight);
+  }
+  $("#send").click(function(e) {
+    sendMsg();
+    e.preventDefault();
+  });
+  $("#message").keydown(function(e) {
+    var key = e.which;
+    if (key == 13) {
+      sendMsg();
+      e.preventDefault();
+    }
+  })
+});
+</script>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="message-wrap" style="overflow-y:auto;">
+        </div>
+        <div class="row">
+          <div class="input-group send">
+            <input type="text" class="form-control" placeholder="Message..." id="message" autocomplete="off">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="submit" id="send">Send</button>
+            </span>
+          </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

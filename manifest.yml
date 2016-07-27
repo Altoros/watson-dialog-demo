@@ -1,0 +1,12 @@
+declared-services:
+  dialog_svc:
+    label: dialog
+    plan: standard
+applications:
+- name: watson-dialog-demo
+  path: .
+  buildpack: go_buildpack
+  env:
+    GO15VENDOREXPERIMENT: 0
+  services:
+    - dialog_svc
